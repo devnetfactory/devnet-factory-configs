@@ -129,10 +129,15 @@
                 },
                 {
                     "name": "2",
-                    "description": "Network Interface",
-                    "shutdown": [
-                        null
-                    ],
+                    "description": "Haitham was here!!",
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "10.255.103.1",
+                                "mask": "255.255.255.0"
+                            }
+                        }
+                    },
                     "mop": {
                         "enabled": false,
                         "sysid": false
@@ -153,6 +158,58 @@
                     },
                     "Cisco-IOS-XE-ethernet:negotiation": {
                         "auto": true
+                    }
+                }
+            ],
+            "Loopback": [
+                {
+                    "name": 5,
+                    "description": "Test devnet-factory room",
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "192.168.5.1",
+                                "mask": "255.255.255.0"
+                            }
+                        }
+                    },
+                    "logging": {
+                        "event": {
+                            "link-status": [
+                                null
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": 55,
+                    "description": "Test devnet-factory ticket update",
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "192.168.55.1",
+                                "mask": "255.255.255.0"
+                            }
+                        }
+                    },
+                    "logging": {
+                        "event": {
+                            "link-status": [
+                                null
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": 203,
+                    "description": "test from python",
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "172.16.16.1",
+                                "mask": "255.255.255.0"
+                            }
+                        }
                     }
                 }
             ]
@@ -210,14 +267,6 @@
                     ]
                 }
             }
-        },
-        "router": {
-            "Cisco-IOS-XE-ospf:ospf": [
-                {
-                    "id": 19,
-                    "router-id": "33.44.88.22"
-                }
-            ]
         },
         "license": {
             "udi": {
