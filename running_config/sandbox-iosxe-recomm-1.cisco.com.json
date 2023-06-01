@@ -58,6 +58,30 @@
                 }
             }
         ],
+        "vrf": {
+            "definition": [
+                {
+                    "name": "CUSTOMER2",
+                    "address-family": {
+                        "ipv4": {},
+                        "ipv6": {}
+                    }
+                },
+                {
+                    "name": "RD",
+                    "rd": "100:1",
+                    "address-family": {
+                        "ipv6": {}
+                    }
+                },
+                {
+                    "name": "test1",
+                    "address-family": {
+                        "ipv4": {}
+                    }
+                }
+            ]
+        },
         "ip": {
             "domain": {
                 "name": "cisco.com"
@@ -106,6 +130,11 @@
                 "secure-server": true
             }
         },
+        "ipv6": {
+            "unicast-routing": [
+                null
+            ]
+        },
         "interface": {
             "GigabitEthernet": [
                 {
@@ -129,15 +158,10 @@
                 },
                 {
                     "name": "2",
-                    "description": "Haitham was here!!",
-                    "ip": {
-                        "address": {
-                            "primary": {
-                                "address": "10.255.103.1",
-                                "mask": "255.255.255.0"
-                            }
-                        }
-                    },
+                    "description": "Network Interface",
+                    "shutdown": [
+                        null
+                    ],
                     "mop": {
                         "enabled": false,
                         "sysid": false
@@ -182,34 +206,72 @@
                     }
                 },
                 {
-                    "name": 55,
-                    "description": "Test devnet-factory ticket update",
+                    "name": 10,
+                    "vrf": {
+                        "forwarding": "test1"
+                    },
                     "ip": {
                         "address": {
                             "primary": {
-                                "address": "192.168.55.1",
-                                "mask": "255.255.255.0"
+                                "address": "172.16.100.1",
+                                "mask": "255.255.255.255"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": 20,
+                    "vrf": {
+                        "forwarding": "CUSTOMER2"
+                    },
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "172.16.120.1",
+                                "mask": "255.255.255.255"
                             }
                         }
                     },
-                    "logging": {
-                        "event": {
-                            "link-status": [
-                                null
+                    "ipv6": {
+                        "address": {
+                            "prefix-list": [
+                                {
+                                    "prefix": "2001:DB8:1:120::1/128"
+                                }
                             ]
                         }
                     }
                 },
                 {
-                    "name": 203,
-                    "description": "test from python",
+                    "name": 30,
+                    "vrf": {
+                        "forwarding": "RD"
+                    },
+                    "ipv6": {
+                        "address": {
+                            "prefix-list": [
+                                {
+                                    "prefix": "2001:DB8:2:230::1/128"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "VirtualPortGroup": [
+                {
+                    "name": 0,
                     "ip": {
                         "address": {
                             "primary": {
-                                "address": "172.16.16.1",
+                                "address": "192.168.255.1",
                                 "mask": "255.255.255.0"
                             }
                         }
+                    },
+                    "mop": {
+                        "enabled": false,
+                        "sysid": false
                     }
                 }
             ]
@@ -322,6 +384,7 @@
                 }
             ]
         },
+        "iox": {},
         "Cisco-IOS-XE-diagnostics:diagnostic": {
             "bootup": {
                 "level": "minimal"
