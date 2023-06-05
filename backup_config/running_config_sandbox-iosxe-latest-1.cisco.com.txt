@@ -1,8 +1,8 @@
 Building configuration...
 
-Current configuration : 7561 bytes
+Current configuration : 7242 bytes
 !
-! Last configuration change at 10:45:41 UTC Mon Jun 5 2023 by admin
+! Last configuration change at 14:04:18 UTC Mon Jun 5 2023 by admin
 !
 version 17.9
 service timestamps debug datetime msec
@@ -18,7 +18,6 @@ boot-start-marker
 boot-end-marker
 !
 !
-no logging console
 no aaa new-model
 !
 !
@@ -28,8 +27,6 @@ no aaa new-model
 !
 !
 ip domain name cisco.com
-!
-ip dhcp pool test
 !
 !
 !
@@ -124,16 +121,10 @@ memory free low-watermark processor 63709
 !
 !
 username admin privilege 15 secret 9 $9$lgJxy7Ga.Th5FU$gocFhcHC/8pvixGr.s2wB7X59FiGVvwYawfCPrmaJuY
-username vijay privilege 15 password 0 cisco
-username vijays privilege 15 password 0 cisco
 !
 redundancy
 !
 !
-!
-!
-policy-map test
- class class-default
 !
 !
 !
@@ -145,7 +136,6 @@ interface Loopback0
 !
 interface Loopback10
  no ip address
- shutdown
 !
 interface Loopback57
  description Test devnet-factory jenkins pipeline
@@ -154,10 +144,6 @@ interface Loopback57
 interface Loopback109
  description Configured by RESTCONF ga jadi
  ip address 10.255.255.9 255.255.255.0
-!
-interface Loopback222
- description Configured by RESTCONF
- ip address 172.22.1.1 255.255.255.0
 !
 interface VirtualPortGroup0
  ip address 192.168.1.1 255.255.255.0
@@ -170,7 +156,7 @@ interface GigabitEthernet1
 !
 interface GigabitEthernet2
  description Network Interface
- ip address 172.16.1.65 255.255.255.0
+ no ip address
  shutdown
  negotiation auto
 !
@@ -214,7 +200,6 @@ Thanks for stopping by.
 ^C
 !
 line con 0
- exec-timeout 0 0
  stopbits 1
 line aux 0
 line vty 0 4
