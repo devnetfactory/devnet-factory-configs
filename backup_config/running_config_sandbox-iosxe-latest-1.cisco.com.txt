@@ -1,8 +1,8 @@
 Building configuration...
 
-Current configuration : 7283 bytes
+Current configuration : 7561 bytes
 !
-! Last configuration change at 05:59:48 UTC Sun Jun 4 2023 by admin
+! Last configuration change at 10:45:41 UTC Mon Jun 5 2023 by admin
 !
 version 17.9
 service timestamps debug datetime msec
@@ -28,6 +28,8 @@ no aaa new-model
 !
 !
 ip domain name cisco.com
+!
+ip dhcp pool test
 !
 !
 !
@@ -130,6 +132,10 @@ redundancy
 !
 !
 !
+policy-map test
+ class class-default
+!
+!
 !
 !
 !
@@ -139,10 +145,19 @@ interface Loopback0
 !
 interface Loopback10
  no ip address
+ shutdown
+!
+interface Loopback57
+ description Test devnet-factory jenkins pipeline
+ ip address 192.168.57.1 255.255.255.0
 !
 interface Loopback109
  description Configured by RESTCONF ga jadi
  ip address 10.255.255.9 255.255.255.0
+!
+interface Loopback222
+ description Configured by RESTCONF
+ ip address 172.22.1.1 255.255.255.0
 !
 interface VirtualPortGroup0
  ip address 192.168.1.1 255.255.255.0
@@ -155,7 +170,7 @@ interface GigabitEthernet1
 !
 interface GigabitEthernet2
  description Network Interface
- ip address 10.255.10.101 255.255.255.0
+ ip address 172.16.1.65 255.255.255.0
  shutdown
  negotiation auto
 !
